@@ -13,8 +13,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if ($this->app->environment() == 'local') {
-            $this->app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
-        }
+        $this->app->bind(
+            'App\Repositories\Contracts\ArticleRepositoryInterface',
+            'App\Repositories\Eloquent\ArticleRepository',
+        );
+        // if ($this->app->environment() == 'local') {
+        //     $this->app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
+        // }
     }
 }

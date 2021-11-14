@@ -122,8 +122,8 @@ $app->router->group([
 
 
 
-if ($app->environment() !== 'production') {
-    $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
-}
+// if ($app->environment() !== 'production') {
+//     $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
+// }
 
 return $app;
