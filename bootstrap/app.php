@@ -94,7 +94,7 @@ $app->routeMiddleware([
 $app->register(App\Providers\AppServiceProvider::class);
 $app->register(App\Providers\AuthServiceProvider::class);
 $app->register(App\Providers\EventServiceProvider::class);
-
+$app->register(App\Repositories\Providers\RepositoryServiceProvider::class);
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes
