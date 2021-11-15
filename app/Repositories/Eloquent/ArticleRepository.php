@@ -7,19 +7,34 @@ use App\Repositories\Contracts\ArticleRepositoryInterface;
 
 class ArticleRepository implements ArticleRepositoryInterface
 {
+    private $article;
+    public function __construct(Article $article)
+    {
+        $this->article = $article;
+    }
 
     public function getAll()
     {
-        return Article::all();
+        return $this->article->all();
+    }
+
+    public function get($id)
+    {
+        return $this->article->findOrFail($id);
     }
 
 
-    // public function get(Article $Article);
+    public function save(array $attributes)
+    {
+        return $this->article->create($attributes);
+    }
+    public function update($id, array $attributes)
+    {
+        return $this->article->findOrFail($id)->update($attributes);
+    }
 
-
-    // public function delete(Article $Article);
-
-    // public function save(array $data);
-
-    // public function update(Article $Article);
+    public function delete($id)
+    {
+        return $this->article->findOrFail($id)->delete();
+    }
 }

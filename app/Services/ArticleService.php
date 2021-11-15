@@ -18,22 +18,22 @@ class ArticleService
     {
         return $this->articleRepository->getAll();
     }
-    // public function saveData($data)
-    // {
+    public function saveData($data)
+    {
 
-    //     return $this->articleRepository->save($data);
-    // }
-    // public function findById($modelId)
-    // {
-    //     return $this->articleRepository->get($modelId);
-    // }
-    // public function updateData(Article $Article, $data)
-    // {
+        return $this->articleRepository->save($data);
+    }
+    public function findById($modelId)
+    {
+        return $this->articleRepository->get($modelId);
+    }
+    public function updateData($id, $data)
+    {
 
-    //     return $this->articleRepository->update($Article, $data);
-    // }
-    // public function deleteById($modelId)
-    // {
-    //     return $this->articleRepository->delete($modelId);
-    // }
+        return $this->articleRepository->update($id, $data);
+    }
+    public function deleteById($modelId)
+    {
+        return $this->articleRepository->delete($modelId);
+    }
 }

@@ -9,12 +9,12 @@ interface ArticleRepositoryInterface
     public function getAll();
 
 
-    // public function get(Article $Article);
+    public function get($id);
 
 
-    // public function delete(Article $Article);
+    public function delete($id);
 
-    // public function save(array $data);
+    public function save(array $data);
 
-    // public function update(Article $Article);
+    public function update($id, array $data);
 }
