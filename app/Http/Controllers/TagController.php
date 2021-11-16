@@ -27,6 +27,7 @@ class TagController extends BaseController
      */
     public function index()
     {
+
         $data = TagResource::collection($this->tagService->all());
         return $this->paginate($data);
     }

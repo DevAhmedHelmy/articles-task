@@ -6,31 +6,32 @@ use App\Repositories\Contracts\TagRepositoryInterface;
 
 class TagService
 {
-    private $tagsRepository;
-    public function __construct(TagRepositoryInterface $tagsRepository)
+    private $tagRepository;
+    public function __construct(TagRepositoryInterface $tagRepository)
     {
-        $this->tagsRepository = $tagsRepository;
+        $this->tagRepository = $tagRepository;
     }
     public function all()
     {
-        return $this->tagsRepository->getAll();
+
+        return $this->tagRepository->getAll();
     }
     public function saveData($data)
     {
 
-        return $this->tagsRepository->save($data);
+        return $this->tagRepository->save($data);
     }
     public function findById($modelId)
     {
-        return $this->tagsRepository->get($modelId);
+        return $this->tagRepository->get($modelId);
     }
     public function updateData($id, $data)
     {
 
-        return $this->tagsRepository->update($id, $data);
+        return $this->tagRepository->update($id, $data);
     }
     public function deleteById($modelId)
     {
-        return $this->tagsRepository->delete($modelId);
+        return $this->tagRepository->delete($modelId);
     }
 }

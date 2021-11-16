@@ -16,6 +16,7 @@ class TagRepository implements TagRepositoryInterface
 
     public function getAll()
     {
+
         return $this->tag->all();
     }
 

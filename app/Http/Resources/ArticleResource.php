@@ -18,6 +18,7 @@ class ArticleResource extends JsonResource
             'title' => $this->title,
             'content' => $this->content,
             'author' => $this->user->name,
+            'tags' => TagResource::collection($this->tags()),
             'created_at' => $this->created_at->format('d/m/Y')
         ];
     }
