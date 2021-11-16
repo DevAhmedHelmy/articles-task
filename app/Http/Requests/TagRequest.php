@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Anik\Form\FormRequest;
 
-class ArticleRequest extends FormRequest
+class TagRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class ArticleRequest extends FormRequest
     protected function rules(): array
     {
         return [
-            'title' => 'required',
-            'content' => 'required',
+            'name' => 'required',
+
         ];
     }
 }

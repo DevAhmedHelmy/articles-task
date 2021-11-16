@@ -26,10 +26,15 @@ class ArticleRepository implements ArticleRepositoryInterface
 
     public function save(array $attributes)
     {
+
+
+
         return $this->article->create($attributes);
     }
     public function update($id, array $attributes)
     {
+
+
         return $this->article->findOrFail($id)->update($attributes);
     }
 

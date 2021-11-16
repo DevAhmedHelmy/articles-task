@@ -4,7 +4,6 @@ namespace App\Services;
 
 
 
-use App\Models\Article;
 use App\Repositories\Contracts\ArticleRepositoryInterface;
 
 class ArticleService

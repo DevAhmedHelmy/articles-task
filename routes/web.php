@@ -22,5 +22,11 @@ $router->group(
         $router->post('login',  ['uses' => 'AuthController@login']);
         $router->post('register',  ['uses' => 'AuthController@register']);
         $router->get('articles',  ['uses' => 'ArticleController@index']);
+        $router->post('articles',  ['uses' => 'ArticleController@store']);
+
+
+        // tags module
+        $router->get('tags',  ['uses' => 'TagController@index']);
+        $router->post('tags',  ['uses' => 'TagController@store']);
     }
 );

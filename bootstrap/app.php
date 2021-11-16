@@ -112,7 +112,7 @@ $app->register(App\Repositories\Providers\RepositoryServiceProvider::class);
 $app->register(Laravel\Passport\PassportServiceProvider::class);
 $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 
-
+$app->register(\Anik\Form\FormRequestServiceProvider::class);
 
 $app->router->group([
     'namespace' => 'App\Http\Controllers',

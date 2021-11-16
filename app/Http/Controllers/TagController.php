@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\ArticleService;
-use App\Http\Requests\ArticleRequest;
-use App\Http\Resources\ArticleResource;
+use App\Services\TagService;
+use App\Http\Requests\TagRequest;
+use App\Http\Resources\TagResource;
 
-class ArticleController extends BaseController
+class TagController extends BaseController
 {
     /**
      * Create a new controller instance.
@@ -14,10 +14,10 @@ class ArticleController extends BaseController
      * @return void
      */
 
-    private $articleService;
-    public function __construct(ArticleService $articleService)
+    private $tagService;
+    public function __construct(TagService $tagService)
     {
-        $this->articleService = $articleService;
+        $this->tagService = $tagService;
         $this->middleware('auth');
     }
     /**
@@ -27,7 +27,7 @@ class ArticleController extends BaseController
      */
     public function index()
     {
-        $data = ArticleResource::collection($this->articleService->all());
+        $data = TagResource::collection($this->tagService->all());
         return $this->paginate($data);
     }
 
@@ -37,11 +37,11 @@ class ArticleController extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ArticleRequest $request)
+    public function store(TagRequest $request)
     {
 
-        $data = $this->articleService->saveData($request->all());
-        return $this->sendResponse(new ArticleResource($data));
+        $data = $this->tagService->saveData($request->all());
+        return $this->sendResponse(new TagResource($data));
     }
 
     /**
@@ -52,8 +52,8 @@ class ArticleController extends BaseController
      */
     public function show($id)
     {
-        $data = $this->articleService->findById($id);
-        return $this->sendResponse(new ArticleResource($data));
+        $data = $this->tagService->findById($id);
+        return $this->sendResponse(new TagResource($data));
     }
 
     /**
@@ -63,10 +63,10 @@ class ArticleController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ArticleRequest $request, $id)
+    public function update(TagRequest $request, $id)
     {
-        $data = $this->articleService->updateData($id, $request->all());
-        return $this->sendResponse(new ArticleResource($data));
+        $data = $this->tagService->updateData($id, $request->all());
+        return $this->sendResponse(new TagResource($data));
     }
 
     /**
@@ -77,7 +77,7 @@ class ArticleController extends BaseController
      */
     public function destroy($id)
     {
-        $this->articleService->deleteById($id);
+        $this->tagService->deleteById($id);
         return response()->json(['message' => "deleted"], 200);
     }
 }

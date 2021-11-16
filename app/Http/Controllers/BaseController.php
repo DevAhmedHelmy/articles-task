@@ -10,7 +10,7 @@ class BaseController extends Controller
 {
     public function sendResponse($data)
     {
-        return response()->json(['data' => $data, 'message' => "Show All Data"], 200);
+        return response()->json(['data' => $data, 'message' => "Show Data"], 200);
     }
 
     /**
