@@ -15,7 +15,8 @@ class ArticleRepository implements ArticleRepositoryInterface
 
     public function getAll()
     {
-        return $this->article->all();
+
+        return $this->article->with("tags")->get();
     }
 
     public function get($id)
@@ -27,15 +28,15 @@ class ArticleRepository implements ArticleRepositoryInterface
     public function save(array $attributes)
     {
 
-
-
-        return $this->article->create($attributes);
+        $article = $this->article->create($attributes);
+        if ($article && $attributes['tags']) $article->tags()->sync($attributes['tags']);
+        return $article;
     }
     public function update($id, array $attributes)
     {
-
-
-        return $this->article->findOrFail($id)->update($attributes);
+        $article = $this->article->findOrFail($id);
+        if ($article->update($attributes) && $attributes['tags']) $article->tags()->sync($attributes['tags']);
+        return $article;
     }
 
     public function delete($id)

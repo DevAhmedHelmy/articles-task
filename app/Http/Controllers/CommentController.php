@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\ArticleService;
-use App\Http\Requests\ArticleRequest;
-use App\Http\Resources\ArticleResource;
+use App\Services\CommentService;
+use App\Http\Requests\CommentRequest;
+use App\Http\Resources\CommentResource;
 
-class ArticleController extends BaseController
+class CommentController extends BaseController
 {
     /**
      * Create a new controller instance.
@@ -14,10 +14,10 @@ class ArticleController extends BaseController
      * @return void
      */
 
-    private $articleService;
-    public function __construct(ArticleService $articleService)
+    private $commentService;
+    public function __construct(CommentService $commentService)
     {
-        $this->articleService = $articleService;
+        $this->commentService = $commentService;
         $this->middleware('auth');
     }
     /**
@@ -28,7 +28,7 @@ class ArticleController extends BaseController
     public function index()
     {
 
-        $data = ArticleResource::collection($this->articleService->all());
+        $data = CommentResource::collection($this->commentService->all());
         return $this->paginate($data);
     }
 
@@ -38,11 +38,11 @@ class ArticleController extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ArticleRequest $request)
+    public function store(CommentRequest $request)
     {
 
-        $data = $this->articleService->saveData($request->all());
-        return $this->sendResponse(new ArticleResource($data));
+        $data = $this->commentService->saveData($request->all());
+        return $this->sendResponse(new CommentResource($data));
     }
 
     /**
@@ -53,8 +53,8 @@ class ArticleController extends BaseController
      */
     public function show($id)
     {
-        $data = $this->articleService->findById($id);
-        return $this->sendResponse(new ArticleResource($data));
+        $data = $this->commentService->findById($id);
+        return $this->sendResponse(new CommentResource($data));
     }
 
     /**
@@ -64,10 +64,10 @@ class ArticleController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ArticleRequest $request, $id)
+    public function update(CommentRequest $request, $id)
     {
-        $data = $this->articleService->updateData($id, $request->all());
-        return $this->sendResponse(new ArticleResource($data));
+        $data = $this->commentService->updateData($id, $request->all());
+        return $this->sendResponse(new CommentResource($data));
     }
 
     /**
@@ -78,7 +78,7 @@ class ArticleController extends BaseController
      */
     public function destroy($id)
     {
-        $this->articleService->deleteById($id);
+        $this->commentService->deleteById($id);
         return response()->json(['message' => "deleted"], 200);
     }
 }

@@ -24,5 +24,10 @@ class RepositoryServiceProvider extends ServiceProvider
             'App\Repositories\Contracts\TagRepositoryInterface',
             'App\Repositories\Eloquent\TagRepository',
         );
+        $this->app->bind(
+
+            'App\Repositories\Contracts\CommentRepositoryInterface',
+            'App\Repositories\Eloquent\CommentRepository',
+        );
     }
 }

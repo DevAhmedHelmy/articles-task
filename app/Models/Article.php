@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
+use App\Models\Tag;
 use Illuminate\Database\Eloquent\Model;
-use phpDocumentor\Reflection\DocBlock\Tag;
 
 class Article extends Model
 {
-    protected $guarded = [];
+    protected $guarded = ["tags"];
 
 
     public function user()

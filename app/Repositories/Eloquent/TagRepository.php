@@ -16,7 +16,6 @@ class TagRepository implements TagRepositoryInterface
 
     public function getAll()
     {
-
         return $this->tag->all();
     }
 
@@ -28,15 +27,13 @@ class TagRepository implements TagRepositoryInterface
 
     public function save(array $attributes)
     {
-
-
         return $this->tag->create($attributes);
     }
     public function update($id, array $attributes)
     {
-
-
-        return $this->tag->findOrFail($id)->update($attributes);
+        $tag = $this->tag->findOrFail($id);
+        $tag->update($attributes);
+        return $tag;
     }
 
     public function delete($id)
