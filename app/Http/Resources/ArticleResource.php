@@ -21,7 +21,7 @@ class ArticleResource extends JsonResource
             'author' => $this->user->name,
             'tags' => $this->tags ? TagResource::collection($this->tags) : [],
             "comments" => $this->comments ? CommentResource::collection($this->comments) : [],
-            'created_at' => $this->created_at->format('d/m/Y')
+            'created_at' => $this->created_at->toFormattedDateString()
         ];
     }
 }

@@ -18,7 +18,8 @@ class ArticleController extends BaseController
     public function __construct(ArticleService $articleService)
     {
         $this->articleService = $articleService;
-        $this->middleware('auth');
+
+        $this->middleware('auth', ["except" => ['index', 'show']]);
     }
     /**
      * Display a listing of the resource.
