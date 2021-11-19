@@ -17,6 +17,7 @@ class ArticleResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
+            'sub_title' => $this->sub_title,
             'content' => $this->content,
             'author' => $this->user->name,
             'tags' => $this->tags ? TagResource::collection($this->tags) : [],
