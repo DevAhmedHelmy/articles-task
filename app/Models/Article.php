@@ -7,8 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
-    protected $guarded = ["tags"];
+    protected $guarded = [];
+    protected $casts = [
 
+        'tags' => 'array', // Will convarted to (Array)
+    ];
 
     public function user()
     {
@@ -16,8 +19,8 @@ class Article extends Model
     }
 
 
-    public function tags()
+    public function comments()
     {
-        return $this->belongsToMany(Tag::class, 'article_tag', 'article_id', 'tag_id');
+        return $this->hasMany(Comment::class, 'article_id');
     }
 }

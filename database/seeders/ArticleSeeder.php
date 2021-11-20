@@ -16,7 +16,7 @@ class ArticleSeeder extends Seeder
      */
     public function run()
     {
-        Tag::create(["name" => "test tag"]);
+
         Article::create([
             "title" => "Man must explore, and this is exploration at its greatest",
             "sub_title" => "Problems look mighty small from 150 miles up",
@@ -30,9 +30,8 @@ A Chinese tale tells of some men sent to harm a young girl who, upon seeing her 
 
 For those who have seen the Earth from space, and for the hundreds and perhaps thousands more who will, the experience most certainly changes your perspective. The things that we share in our world are far more valuable than those which divide us.",
             'user_id' => 1,
+            "tags" => ['test', 'test2']
 
         ]);
-
-        DB::insert('insert into article_tag (id, article_id,tag_id) values (?, ?,?)', [1, 1, 1]);
     }
 }

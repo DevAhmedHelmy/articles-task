@@ -18,7 +18,7 @@ class CommentResource extends JsonResource
             'id' => $this->id,
             'comment' => $this->comment,
             "user" => $this->user->name,
-            'created_at' => $this->created_at->format('d/m/Y')
+            'created_at' => $this->created_at->diffForHumans()
         ];
     }
 }

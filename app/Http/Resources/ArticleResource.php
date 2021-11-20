@@ -20,7 +20,8 @@ class ArticleResource extends JsonResource
             'sub_title' => $this->sub_title,
             'content' => $this->content,
             'author' => $this->user->name,
-            'tags' => $this->tags ? TagResource::collection($this->tags) : [],
+            'user_id' => $this->user_id,
+            'tags' => $this->tags,
             "comments" => $this->comments ? CommentResource::collection($this->comments) : [],
             'created_at' => $this->created_at->toFormattedDateString()
         ];

@@ -26,20 +26,15 @@ $router->group(
         $router->get('articles',  ['uses' => 'ArticleController@index']);
         $router->post('articles',  ['uses' => 'ArticleController@store']);
         $router->get('articles/{id}',  ['uses' => 'ArticleController@show']);
-        $router->patch('articles/{id}',  ['uses' => 'ArticleController@update']);
+        $router->put('articles/{id}',  ['uses' => 'ArticleController@update']);
         $router->delete('articles/{id}',  ['uses' => 'ArticleController@destroy']);
-        // tags module
-        $router->get('tags',  ['uses' => 'TagController@index']);
-        $router->post('tags',  ['uses' => 'TagController@store']);
-        $router->get('tags/{id}',  ['uses' => 'TagController@show']);
-        $router->patch('tags/{id}',  ['uses' => 'TagController@update']);
-        $router->delete('tags/{id}',  ['uses' => 'TagController@destroy']);
+
 
         // comments module
         $router->get('comments',  ['uses' => 'CommentController@index']);
         $router->post('comments',  ['uses' => 'CommentController@store']);
         $router->get('comments/{id}',  ['uses' => 'CommentController@show']);
-        $router->patch('comments/{id}',  ['uses' => 'CommentController@update']);
+        $router->put('comments/{id}',  ['uses' => 'CommentController@update']);
         $router->delete('comments/{id}',  ['uses' => 'CommentController@destroy']);
     }
 );
