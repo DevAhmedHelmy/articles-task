@@ -4,10 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('auth', ["only" => ['logout']]);
+    }
     public function register(Request $request)
     {
         $this->validate($request, [
@@ -51,5 +56,14 @@ class AuthController extends Controller
             'token' => $generateToken
         ]);
         return response()->json(['message' => 'Login successfully', 'data' => $user, 'access_token' => $user->token], 201);
+    }
+    public function logout()
+    {
+        if (!auth()->user()) {
+            return response()->json(['message' => 'Not authorized'], 401);
+        }
+        DB::table("users")->where('id', auth()->user()->id)->update(["token" => null]);
+
+        return response()->json('Logged Out', 200);
     }
 }

@@ -21,7 +21,7 @@ $router->group(
     function () use ($router) {
         $router->post('login',  ['uses' => 'AuthController@login']);
         $router->post('register',  ['uses' => 'AuthController@register']);
-
+        $router->post('logout',  ['uses' => 'AuthController@logout']);
         // articles
         $router->get('articles',  ['uses' => 'ArticleController@index']);
         $router->post('articles',  ['uses' => 'ArticleController@store']);
