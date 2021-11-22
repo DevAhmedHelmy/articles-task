@@ -17,15 +17,16 @@ class AuthController extends Controller
     {
         $this->validate($request, [
             'email' => 'required|unique:users|email',
-            'password' => 'required|min:6'
+            'password' => 'required|min:6|confirmed',
+            "name" => "required",
         ]);
 
-        $email = $request->input('email');
-        $password = Hash::make($request->input('password'));
+
 
         $user = User::create([
-            'email' => $email,
-            'password' => $password,
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
             'token' => bin2hex(random_bytes(40))
         ]);
         return response()->json(['message' => 'Data added successfully', 'data' => $user, 'access_token' => $user->token], 201);
